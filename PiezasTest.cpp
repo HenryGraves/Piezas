@@ -48,13 +48,12 @@ TEST(PiezasTest, dropPiece_FullCol) {
 
 TEST(PiezasTest, dropPiece_OutOfBoundsPositive) {
 	Piezas game;
-	std::cout << game.dropPiece(BOARD_COLS) << std::endl;
-	ASSERT_EQ(game.dropPiece(BOARD_COLS + 1), Invalid);
+	ASSERT_EQ(game.dropPiece(BOARD_COLS), Invalid);
 }
 
 TEST(PiezasTest, dropPiece_OutOfBoundsNegative) {
 	Piezas game;
-	ASSERT_EQ(game.dropPiece(-2), Invalid);
+	ASSERT_EQ(game.dropPiece(-1), Invalid);
 }
 
 // Testing pieceAt() corners
@@ -104,8 +103,22 @@ TEST(PiezasTest, pieceAt_BottomEdgeOutOfBounds) {
 }
 
 // Testing pieceAt() return Blank
+TEST(PiezasTest, pieceAt_ReturnABlank) {
+	Piezas game;
+	ASSERT_EQ(game.pieceAt(0, 0), Blank);
+}
 
 // Testing pieceAt() return an X
+TEST(PiezasTest, pieceAt_ReturnAnX) {
+	Piezas game;
+	game.dropPiece(0);
+	ASSERT_EQ(game.pieceAt(0, 0), X);
+}
 
 // Testing pieceAt() return an O
-
+TEST(PiezasTest, pieceAt_ReturnAnO) {
+	Piezas game;
+	game.dropPiece(0);
+	game.dropPiece(0);
+	ASSERT_EQ(game.pieceAt(1, 0), O);
+}
