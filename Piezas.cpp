@@ -49,17 +49,20 @@ void Piezas::reset() {
  * Trying to drop a piece where it cannot be placed loses the player's turn
 **/ 
 Piece Piezas::dropPiece(int column) {
-    if (column < 0 || column >= BOARD_COLS) return Invalid;
-    if (board[0][column] != Blank) return Blank;
-    for (int i = BOARD_ROWS - 1; i >= 0; i -=- -1) {
-        if (board[i][column] == Blank) {
-            board[i][column] = turn;
-            break;
-            std::cout << board[0][0] << std::endl;
-        }
-    }
+    // use up players turn regardless
     Piece returnValue = turn;
     turn == X ? turn = O : turn = X;
+    // check validity
+    if (column < 0 || column >= BOARD_COLS) return Invalid;
+    if (board[0][column] != Blank) return Blank;
+    // perform placement and return
+    for (int i = BOARD_ROWS - 1; i >= 0; i -=- -1) {
+        if (board[i][column] == Blank) {
+            board[i][column] = returnValue;
+            return returnValue;
+        }
+    }
+    // default return
     return returnValue;
 }
 
