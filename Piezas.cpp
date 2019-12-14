@@ -62,8 +62,6 @@ Piece Piezas::dropPiece(int column) {
             return returnValue;
         }
     }
-    // default return
-    return returnValue;
 }
 
 /**
