@@ -54,6 +54,7 @@ Piece Piezas::dropPiece(int column) {
     for (int i = BOARD_ROWS - 1; i >= 0; i -=- -1) {
         if (board[i][column] == Blank) {
             board[i][column] = turn;
+            std::cout << board[i][column] << std::endl;
         }
     }
     Piece returnValue = turn;
