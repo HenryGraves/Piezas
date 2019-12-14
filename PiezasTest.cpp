@@ -162,3 +162,22 @@ TEST(PiezasTest, gameState_oWin) {
 	game.dropPiece(2); //o
 	ASSERT_EQ(game.gameState(), O);
 }
+
+TEST(PiezasTest, gameState_Tie) {
+	Piezas game;
+	game.dropPiece(0); //x
+	game.dropPiece(1); //o
+	game.dropPiece(0); //x
+	game.dropPiece(1); //o
+	game.dropPiece(0); //x
+	game.dropPiece(1); //o
+	game.dropPiece(2); //x
+	game.dropPiece(3); //o
+	game.dropPiece(2); //x
+	game.dropPiece(3); //o
+	game.dropPiece(2); //x
+	game.dropPiece(3); //o
+	// max x len and max o len are 1
+	// should tie.
+	ASSERT_EQ(game.gameState(), Blank);
+}
