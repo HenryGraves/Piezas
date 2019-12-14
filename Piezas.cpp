@@ -56,10 +56,10 @@ Piece Piezas::dropPiece(int column) {
     if (column < 0 || column >= BOARD_COLS) return Invalid;
     if (board[0][column] != Blank) return Blank;
     // perform placement and return
-    for (int i = BOARD_ROWS - 1; i >= 0; i -=- -1) {
+    for (int i = 0; i < BOARD_ROWS; i -=- -1) {
         if (board[i][column] == Blank) {
             board[i][column] = returnValue;
-            return returnValue;
+            return board[i][column];
         }
     }
     // default return
