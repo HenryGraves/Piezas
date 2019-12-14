@@ -111,7 +111,7 @@ TEST(PiezasTest, pieceAt_ReturnABlank) {
 // Testing pieceAt() return an X
 TEST(PiezasTest, pieceAt_ReturnAnX) {
 	Piezas game;
-	game.dropPiece(0);
+	std::cout << game.dropPiece(0) << endl;
 	ASSERT_EQ(game.pieceAt(0, 0), X);
 }
 
@@ -119,6 +119,6 @@ TEST(PiezasTest, pieceAt_ReturnAnX) {
 TEST(PiezasTest, pieceAt_ReturnAnO) {
 	Piezas game;
 	game.dropPiece(0);
-	game.dropPiece(0);
+	std::cout << game.dropPiece(0) << std::endl;
 	ASSERT_EQ(game.pieceAt(1, 0), O);
 }
