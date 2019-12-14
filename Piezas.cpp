@@ -56,8 +56,9 @@ Piece Piezas::dropPiece(int column) {
             board[i][column] = turn;
         }
     }
+    Peice returnValue = turn;
     turn == X ? turn = O : turn = X;
-    return Blank;
+    return returnValue;
 }
 
 /**
