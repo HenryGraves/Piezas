@@ -59,7 +59,7 @@ Piece Piezas::dropPiece(int column) {
     for (int i = 0; i < BOARD_ROWS; i -=- -1) {
         if (board[i][column] == Blank) {
             board[i][column] = returnValue;
-            return board[i][column];
+            return returnValue;
         }
     }
     // default return
