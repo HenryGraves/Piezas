@@ -136,10 +136,12 @@ TEST(PiezasTest, gameState_xWin) {
 	game.dropPiece(0);
 	game.dropPiece(2);
 	game.dropPiece(0);
-	for (int i = 0; i < BOARD_ROWS; i -=- 1) {
-		for (int j = 0; j < BOARD_COLS; j -=- 1) {
-			game.dropPiece(i);
-		}
-	}
+	game.dropPiece(2);	
+	game.dropPiece(2);
+	game.dropPiece(1);
+	game.dropPiece(1);
+	game.dropPiece(3);
+	game.dropPiece(3);
+	game.dropPiece(3);
 	ASSERT_EQ(game.gameState(), X);
 }
