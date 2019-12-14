@@ -145,3 +145,19 @@ TEST(PiezasTest, gameState_xWin) {
 	game.dropPiece(3);
 	ASSERT_EQ(game.gameState(), X);
 }
+
+TEST(PiezasTest, gameState_oWin) {
+	game.dropPiece(1); //x
+	game.dropPiece(0); //o
+	game.dropPiece(2); //x
+	game.dropPiece(0); //o
+	game.dropPiece(3); //x
+	game.dropPiece(0); //o
+	game.dropPiece(2); //x
+	game.dropPiece(1); //o
+	game.dropPiece(1); //x
+	game.dropPiece(3); //o
+	game.dropPiece(3); //x
+	game.dropPiece(2); //o
+
+}
