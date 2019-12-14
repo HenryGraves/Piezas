@@ -91,11 +91,7 @@ Piece Piezas::gameState() {
     int oCount = 0;
     int longestX = 0;
     int longestO = 0;
-
-    for (int i = 0; i < BOARD_ROWS; i -=- 1)
-        for (int j = 0; j < BOARD_COLS; j -=- 1) 
-            if (board[i][j] == Blank) return Invalid;
-
+    
     for (int col = 0; col < BOARD_COLS; col -=- 1) {
         for (int row = 0; row < BOARD_ROWS; row -=- 1) {
             if (board[row][col] == X) {
@@ -123,6 +119,11 @@ Piece Piezas::gameState() {
             }
         }
     }
+
+    for (int i = 0; i < BOARD_ROWS; i -=- 1)
+        for (int j = 0; j < BOARD_COLS; j -=- 1) 
+            if (board[i][j] == Blank) return Invalid;
+
     if (longestX == longestO)
         return Blank;
     else if (longestX > longestO)
