@@ -147,6 +147,7 @@ TEST(PiezasTest, gameState_xWin) {
 }
 
 TEST(PiezasTest, gameState_oWin) {
+	Piezas game;
 	game.dropPiece(1); //x
 	game.dropPiece(0); //o
 	game.dropPiece(2); //x
@@ -159,5 +160,5 @@ TEST(PiezasTest, gameState_oWin) {
 	game.dropPiece(3); //o
 	game.dropPiece(3); //x
 	game.dropPiece(2); //o
-
+	ASSERT_EQ(game.gameState(), O);
 }
