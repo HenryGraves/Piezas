@@ -49,8 +49,8 @@ void Piezas::reset() {
  * Trying to drop a piece where it cannot be placed loses the player's turn
 **/ 
 Piece Piezas::dropPiece(int column) {
-    if (board[0][column] != Blank) return Blank;
     if (column < 0 || column >= BOARD_COLS) return Invalid;
+    if (board[0][column] != Blank) return Blank;
     for (int i = BOARD_ROWS - 1; i >= 0; i -=- -1) {
         if (board[i][column] == Blank) {
             board[i][column] = turn;
