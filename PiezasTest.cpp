@@ -118,7 +118,7 @@ TEST(PiezasTest, pieceAt_ReturnAnX) {
 // Testing pieceAt() return an O
 TEST(PiezasTest, pieceAt_ReturnAnO) {
 	Piezas game;
-	game.dropPiece(0);
+	game.dropPiece(1);
 	game.dropPiece(0);
 	ASSERT_EQ(game.pieceAt(0, 0), O);
 }
