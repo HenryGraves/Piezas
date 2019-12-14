@@ -48,12 +48,12 @@ TEST(PiezasTest, dropPiece_FullCol) {
 
 TEST(PiezasTest, dropPiece_OutOfBoundsPositive) {
 	Piezas game;
-	ASSERT_EQ(game.dropPiece(BOARD_COLS), Invalid);
+	ASSERT_EQ(game.dropPiece(BOARD_COLS + 1), Invalid);
 }
 
 TEST(PiezasTest, dropPiece_OutOfBoundsNegative) {
 	Piezas game;
-	ASSERT_EQ(game.dropPiece(-1), Invalid);
+	ASSERT_EQ(game.dropPiece(-2), Invalid);
 }
 
 // Testing pieceAt() corners
