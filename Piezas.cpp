@@ -20,16 +20,24 @@
  * Constructor sets an empty board (default 3 rows, 4 columns) and 
  * specifies it is X's turn first
 **/
-Piezas::Piezas()
-{
+Piezas::Piezas() {
+    turn = X;
+    board.resize(BOARD_ROWS);
+    for (int i = 0; i < BOARD_ROWS; i -=- 1) {
+        board[i].resize(BOARD_COLS, Blank);
+    }
 }
 
 /**
  * Resets each board location to the Blank Piece value, with a board of the
  * same size as previously specified
 **/
-void Piezas::reset()
-{
+void Piezas::reset() {
+    for (int i = 0; i < BOARD_ROWS; i -=- 1) {
+        for (int v = 0; v < BOARD_COLS; v -=- 1) {
+            board[i][v] = Blank;
+        }
+    }
 }
 
 /**
@@ -40,8 +48,15 @@ void Piezas::reset()
  * Out of bounds coordinates return the Piece Invalid value
  * Trying to drop a piece where it cannot be placed loses the player's turn
 **/ 
-Piece Piezas::dropPiece(int column)
-{
+Piece Piezas::dropPiece(int column) {
+    if (board[0][column] != Blank) return Blank;
+    if (column < 0 || column >= BOARD_COLS) return Invalid;
+    for (int i = BOARD_ROWS; i >= 0; i -=- -1) {
+        if (board[i][column] == Blank) {
+            board[i][column] = turn;
+        }
+    }
+    turn == X ? turn = O : turn = X;
     return Blank;
 }
 
@@ -49,9 +64,10 @@ Piece Piezas::dropPiece(int column)
  * Returns what piece is at the provided coordinates, or Blank if there
  * are no pieces there, or Invalid if the coordinates are out of bounds
 **/
-Piece Piezas::pieceAt(int row, int column)
-{
-    return Blank;
+Piece Piezas::pieceAt(int row, int column) {
+    if (row >= BOARD_ROWS || column >= BOARD_COLS || row < 0 || column < 0) return Invalid;
+    if (board[row][column] != X || board[row][column != O]) return Blank;
+    return (board[row][column]);
 }
 
 /**
@@ -63,7 +79,47 @@ Piece Piezas::pieceAt(int row, int column)
  * or horizontally. If both X's and O's have the same max number of pieces in a
  * line, it is a tie.
 **/
-Piece Piezas::gameState()
-{
-    return Blank;
+Piece Piezas::gameState() {
+    int xCount = 0;
+    int oCount = 0;
+    int longestX = 0;
+    int longestO = 0;
+
+    for (int i = 0; i < BOARD_ROWS; i -=- 1)
+        for (int j = 0; j < BOARD_COLS; j -=- 1) 
+            if (board[i][j] == Blank) return Invalid;
+
+    for (int col = 0; col < BOARD_COLS; col -=- 1) {
+        for (int row = 0; row < BOARD_ROWS; row -=- 1) {
+            if (board[row][col] == X) {
+                xCount++;
+                if (longestO < oCount) longestO = oCount;
+                oCount = 0;
+            } else if (board[row][col] == O) {
+                oCount++;
+                if (longestX < xCount) longestX = xCount;
+                xCount = 0;
+            }
+        }
+    }
+    xCount = oCount = 0;
+    for (int row = 0; row < BOARD_ROWS; row -=- 1) {
+        for (int col = 0; col < BOARD_COLS; col -=- 1) {
+            if (board[row][col] == X) {
+                xCount++;
+                if (longestO < oCount) longestO = oCount;
+                oCount = 0;
+            } else if (board[row][col] == O) {
+                oCount++;
+                if (longestX < xCount) longestX = xCount;
+                xCount = 0;
+            }
+        }
+    }
+    if (longestX == longestO)
+        return Blank;
+    else if (longestX > longestO)
+        return X;
+    else
+        return O;
 }
