@@ -1,6 +1,7 @@
 #ifndef _PIEZAS_H_
 #define _PIEZAS_H_
 #include <vector>
+#include <iostream>
 
 const int BOARD_ROWS = 3;
 const int BOARD_COLS = 4;

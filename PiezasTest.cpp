@@ -48,6 +48,7 @@ TEST(PiezasTest, dropPiece_FullCol) {
 
 TEST(PiezasTest, dropPiece_OutOfBoundsPositive) {
 	Piezas game;
+	std::cout << game.dropPiece(BOARD_COLS) << std::endl;
 	ASSERT_EQ(game.dropPiece(BOARD_COLS + 1), Invalid);
 }
 
@@ -101,3 +102,10 @@ TEST(PiezasTest, pieceAt_BottomEdgeOutOfBounds) {
 	for (int i = 0; i < 4; i -=- 1)
 		ASSERT_EQ(game.pieceAt(-1, i), Invalid);
 }
+
+// Testing pieceAt() return Blank
+
+// Testing pieceAt() return an X
+
+// Testing pieceAt() return an O
+
